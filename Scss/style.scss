@@ -1,0 +1,316 @@
+@use "./colors" as colors;
+@use "./mixins" as mixins;
+
+//============CSS Reset==========//
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html,
+body {
+	min-height: 100vh;
+	font-size: 13px;
+}
+body {
+	line-height: 1.5;
+	-webkit-font-smoothing: antialiased;
+}
+img,
+picture,
+video,
+canvas,
+svg {
+	display: block;
+	max-width: 100%;
+}
+input,
+button,
+textarea,
+select {
+	font: inherit;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	overflow-wrap: break-word;
+}
+#root,
+#__next {
+	isolation: isolate;
+}
+ul,
+ol {
+	list-style: none;
+}
+//============CSS Reset==========//
+
+body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-size: 15px;
+	background-color: colors.$Grayish_Blue;
+	font-family: "Manrope", sans-serif;
+}
+a,
+i,
+button {
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	color: #fff;
+	& :visited {
+		color: #fff;
+	}
+}
+
+//=================Wrapper=============//
+.wrapper {
+	flex: 1 0 auto;
+	max-width: 375px;
+	padding: 15px 0px;
+	@include mixins.flex_col_aic_jcc;
+}
+
+//=================Wrapper=============//
+
+//=================Card=============//
+
+.card {
+	border: none;
+	border-radius: 8px;
+	overflow: hidden;
+	background-color: colors.$Light_Grayish_Blue;
+	display: flex;
+	flex-direction: column;
+	width: 370px;
+	&_img {
+		width: 370px;
+		height: 250px;
+		background-image: url(../images/drawers.jpg);
+		background-size: cover;
+	}
+	&_text {
+		padding: 10px;
+		text-align: left;
+		padding: 30px 30px 0px 30px;
+		color: colors.$Desaturated_Dark_Blue;
+		& h1 {
+			font-size: 1.5rem;
+			font-weight: 700;
+			color: colors.$Very_Dark_Grayish_Blue;
+		}
+		& p {
+			font-weight: 500;
+			padding-top: 20px;
+		}
+	}
+	&_detail {
+		position: relative;
+		@include mixins.flex_row_aic;
+		height: 80px;
+		&--avatar {
+			@include mixins.flex_row_aic;
+			justify-content: space-between;
+			gap: 80px;
+			width: 100%;
+			& .profile {
+				@include mixins.flex_row_aic;
+				gap: 10px;
+				& li {
+					color: colors.$Very_Dark_Grayish_Blue;
+					font-weight: 700;
+					&:nth-child(2) {
+						color: colors.$Desaturated_Dark_Blue;
+						font-weight: 400;
+					}
+				}
+			}
+			& img {
+				border: none;
+				border-radius: 50%;
+				width: 40px;
+			}
+			& .fa-share {
+				background-color: colors.$Grayish_Blue;
+				border: none;
+				border-radius: 50%;
+				padding: 10px;
+				z-index: 20;
+				cursor: pointer;
+			}
+		}
+		&--share {
+			position: absolute;
+			width: 120%;
+			height: 80px;
+			top: 0;
+			left: -30px;
+			padding: 30px;
+			@include mixins.flex_row_aic;
+			gap: 20px;
+			color: #fff;
+			background-color: colors.$Very_Dark_Grayish_Blue;
+			font-size: 1.7rem;
+			line-height: 1;
+			z-index: 2;
+			& p {
+				text-transform: uppercase;
+				letter-spacing: 2px;
+				font-size: 1.3rem;
+				font-weight: 500;
+				letter-spacing: 10px;
+				color: colors.$Grayish_Blue;
+				padding-bottom: 20px;
+			}
+		}
+	}
+}
+
+.not-active {
+	animation: 0.5s slide-out forwards;
+}
+.active {
+	animation: 0.5s slide-in forwards;
+}
+
+.share_color {
+	color: colors.$Light_Grayish_Blue;
+}
+.share_color_std {
+	color: colors.$Very_Dark_Grayish_Blue;
+}
+
+//=================Card=============//
+
+//=====================Footer================//
+.footer {
+	bottom: 0;
+	padding: 0.5rem;
+	width: 100%;
+	color: #fff;
+	background-color: colors.$Very_Dark_Grayish_Blue;
+	& .attribution {
+		text-align: center;
+		& a {
+			text-decoration: none;
+			color: #fff;
+			&:visited {
+				color: #fff;
+			}
+		}
+	}
+}
+//=====================Footer================//
+
+//=====================Media================//
+@media (min-width: 1200px) {
+	.wrapper {
+		min-width: 900px;
+	}
+	.card {
+		width: 100%;
+		display: grid;
+		grid-template-columns: 0.8fr 1.5fr;
+		grid-template-rows: 1fr;
+		overflow: visible;
+		&_img {
+			grid-column: 1/2;
+			grid-row: 1/2;
+			background-size: cover;
+			height: auto;
+			border-top-left-radius: 8px;
+			border-bottom-left-radius: 8px;
+		}
+		&_text {
+			grid-column: 2/3;
+			grid-row: 1/2;
+			width: 500px;
+			padding: 40px;
+			text-align: left;
+			& h1 {
+				border-radius: 8px;
+				overflow: hidden;
+				left: 63%;
+				font-size: 1.8rem;
+			}
+		}
+		&_detail {
+			&--share {
+				left: 60%;
+				width: 300px;
+				border-radius: 8px;
+				justify-content: space-evenly;
+				&::after {
+					content: "";
+					position: absolute;
+					bottom: -15px;
+					left: 45%;
+					border-width: 15px 15px 0px;
+					border-style: solid;
+					border-color: colors.$Very_Dark_Grayish_Blue transparent;
+					display: block;
+				}
+			}
+		}
+	}
+	.not-active {
+		animation: 0.5s slide-out-desk forwards;
+	}
+	.active {
+		animation: 0.5s slide-in-desk forwards;
+	}
+}
+
+//=====================Media================//
+
+//=====================Animation================//
+@keyframes slide-out {
+	from {
+		transform: translateY(0%);
+		opacity: 1;
+	}
+	to {
+		transform: translateY(100%);
+		opacity: 0;
+	}
+}
+@keyframes slide-in {
+	from {
+		opacity: 0;
+		transform: translateY(100%);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0%);
+	}
+}
+@keyframes slide-in-desk {
+	from {
+		opacity: 0;
+		transform: translateY(0%) scale(0%);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(-100%) scale(100%);
+	}
+}
+@keyframes slide-out-desk {
+	from {
+		transform: scale(100%) translateY(-100%);
+		opacity: 1;
+	}
+	to {
+		transform: scale(0%) translateY(0%);
+		opacity: 0;
+	}
+}
+
+//=====================Animation================//

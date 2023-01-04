@@ -1,0 +1,15 @@
+@mixin flex_row_aic {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+@mixin flex_col_aic_jcc {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+    justify-content: center;
+}
+
+@mixin padding_0_30 {
+	padding: 0 30px;
+}
