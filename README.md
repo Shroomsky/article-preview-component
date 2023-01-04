@@ -28,6 +28,7 @@ Users should be able to:
 ![Screenshot_1](./Screenshot_1.png)
 ![Screenshot_2](./Screenshot_2.png)
 ![Screenshot_3](./Screenshot_3.png)
+![Screenshot_4](./Screenshot_4.png)
 
 
 - Solution URL: [https://shroomsky.github.io/article-preview-component/](https://shroomsky.github.io/article-preview-component/)
